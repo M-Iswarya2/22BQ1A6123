@@ -7,14 +7,23 @@ const urlStore = {};
 
 app.use(express.json());
 
+// GET / - Friendly message for root
+app.get('/', (req, res) => {
+    res.send('URL Shortener Service is running. Use POST /shorturls to create a short URL.');
+});
+
 // POST /shorturls - Create a short URL
 app.post('/shorturls', (req, res) => {
     const { url, validity, shortcode } = req.body;
     if (!url || !validity || !shortcode) {
         return res.status(400).json({ error: 'url, validity, and shortcode are required' });
     }
-    urlStore[shortcode] = { url, expires: Date.now() + validity * 1000 };
-    res.json({ shortUrl: `http://localhost:${port}/${shortcode}` });
+    const expiry = Date.now() + validity * 1000;
+    urlStore[shortcode] = { url, expires: expiry };
+    res.json({
+        sortlink: `http://localhost:${port}/${shortcode}`,
+        expiry: expiry
+    });
 });
 
 // GET /:shortcode - Redirect if valid
