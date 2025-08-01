@@ -1,0 +1,37 @@
+{
+    "email": "22BQ1A6123@vvit.net",
+    "name": "Maddela Mano Iswarya",
+    "mobileNo": "9441789696",
+    "githubUsername": "M-Iswarya2",
+    "rollNo": "22BQ1A6123",
+    "accessCode": "PnVBFV",
+}
+
+curl -X POST http://20.244.56.144/evaluation-service/register ^
+  -H "Content-Type: application/json" ^
+  -d "{\"email\":\"22BQ1A6123@vvit.net\",\"name\":\"Maddela Mano Iswarya\",\"mobileNo\":\"9441789696\",\"githubUsername\":\"M-Iswarya2\",\"rollNo\":\"22BQ1A6123\",\"accessCode\":\"PnVBFV\"}"
+
+  Invoke-WebRequest -Uri "http://20.244.56.144/evaluation-service/auth" `
+  -Method POST `
+  -Headers @{ "Content-Type" = "application/json" } `
+  -Body '{"clientID":"54076f5a-702d-46d9-8e8f-c66e2f4e83ee","clientSecret":"vcvzEsCzZMMsSfvS"}'
+
+Invoke-WebRequest -Uri "http://20.244.56.144/evaluation-service/auth" `
+  -Method POST `
+  -Headers @{ "Content-Type" = "application/json" } `
+  -Body '{"clientID":"client-id-give","clientSecret":"secret-give"}'
+
+
+
+  final 
+    Invoke-WebRequest -Uri "http://20.244.56.144/evaluation-service/register" `
+>>   -Method POST `
+>>   -Headers @{ "Content-Type" = "application/json" } `
+>>   -Body '{"email":"22BQ1A6123@vvit.net","name":"Maddela Mano Iswarya","mobileNo":"9441789696","githubUsername":"M-Iswarya2","rollNo":"22BQ1A6123","accessCode":"PnVBFV"}'
+
+
+  Invoke-WebRequest -Uri "http://20.244.56.144/evaluation-service/auth" `
+>>   -Method POST `
+>>   -Headers @{ "Content-Type" = "application/json" } `
+>>   -Body '{"email":"22BQ1A6123@vvit.net","name":"Maddela Mano Iswarya","rollNo":"22BQ1A6123","accessCode":"PnVBFV","clientID":"54076f5a-702d-46d9-8e8f-c66e2f4e83ee","clientSecret":"vcvzEsCzZMMsSfvS"}'
+
